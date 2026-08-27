@@ -105,6 +105,9 @@ class EduManagement:
 
     #展示全部学生信息
     def all_student(self):
+        if not self.student_list:
+            print("当前没有学生信息。")
+            return
         for s in self.student_list:
             print(s)
 
@@ -112,28 +115,34 @@ class EduManagement:
 
     def run(self):
         while True:
-            print()
-            print(f"欢迎使用教务管理系统 v{EduManagement.system_version}")
-            print("############# 学生成绩管理系统 #############")
-            print("１．添加学生　　　２．修改学生成绩　　３．删除学生")
-            print("４．查询单个学生　５．显示所有学生　　６．退出系统")
-            choice = input("请输入操作（1-6）：")
-            match choice:
-                case '1':
-                    self.add_student()
-                case '2':
-                    self.update_student()
-                case '3':
-                    self.delete_student()
-                case '4':
-                    self.query_student()
-                case '5':
-                    self.all_student()
-                case '6':
-                    print("感谢使用，再见！")
-                    break
-                case _:
-                    print("无效选项，请重新输入。")
+            try:
+                print()
+                print(f"欢迎使用教务管理系统 v{EduManagement.system_version}")
+                print("############# 学生成绩管理系统 #############")
+                print("１．添加学生　　　２．修改学生成绩　　３．删除学生")
+                print("４．查询单个学生　５．显示所有学生　　６．退出系统")
+                choice = input("请输入操作（1-6）：")
+                match choice:
+                    case '1':
+                        self.add_student()
+                    case '2':
+                        self.update_student()
+                    case '3':
+                        self.delete_student()
+                    case '4':
+                        self.query_student()
+                    case '5':
+                        self.all_student()
+                    case '6':
+                        print("感谢使用，再见！")
+                        break
+                    case _:
+                        print("无效选项，请重新输入。")
+            except KeyboardInterrupt:
+                print("\n用户终端操作，退出系统。")
+                break
+            except Exception as e:
+                print("发生未知错误：", e)
 
 if __name__ == '__main__':
     edu = EduManagement()
