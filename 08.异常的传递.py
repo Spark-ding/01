@@ -10,6 +10,8 @@ def fun3():
     print("进入fun3")
     print(my_value)
 
+print("成功传入GitHub")
+
 if __name__ == '__main__':
     try:
         fun1()
