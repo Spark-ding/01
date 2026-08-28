@@ -11,6 +11,7 @@ def fun3():
     print(my_value)
 
 print("成功传入GitHub")
+print("成功传入GitHub")
 
 if __name__ == '__main__':
     try:
